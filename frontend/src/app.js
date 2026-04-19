@@ -60,10 +60,10 @@ function setupUi() {
     UI_ELEMENTS.ghLogin = document.querySelector("#gh-provider");
 
     UI_ELEMENTS.loginForm.addEventListener("submit", handleLogin);
-    // UI_ELEMENTS.ghLogin.addEventListener("click", () => {
-    //     // Redirect to the backend endpoint that starts the GitHub OAuth flow
-    //     window.location.href = `${BASE_URL}/oauth2/authorization/github`;
-    // })
+    UI_ELEMENTS.ghLogin.addEventListener("click", () => {
+        // Redirect to the backend endpoint that starts the GitHub OAuth flow
+        window.location.href = `${BASE_URL}/oauth2/authorization/github`;
+    })
 }
 
 async function bootstrapCsrfAndMaybeGetUser() {
