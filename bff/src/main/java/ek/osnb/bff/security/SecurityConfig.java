@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .successHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_NO_CONTENT)) // 204
                         .failureHandler((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED)) // 401
                 )
+                .oauth2Login(Customizer.withDefaults())
                 .logout(logout -> logout
                         .logoutUrl("/api/logout")
                         .logoutSuccessHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_NO_CONTENT)) // 204

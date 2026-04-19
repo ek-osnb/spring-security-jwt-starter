@@ -61,6 +61,12 @@
             <artifactId>spring-boot-starter-restclient</artifactId>
         </dependency>
 
+        <!-- For acting as an OAuth2 client to obtain tokens on behalf of the user -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-client</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
