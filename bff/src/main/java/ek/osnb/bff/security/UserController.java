@@ -13,13 +13,18 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    private final TokenSubjectExtractor tokenSubjectExtractor;
+
+    public UserController(TokenSubjectExtractor tokenSubjectExtractor) {
+        this.tokenSubjectExtractor = tokenSubjectExtractor;
+    }
 
     public record UserResponse(String username, List<String> roles) {
     }
 
     @GetMapping
     public UserResponse getUser(Authentication authentication) {
-        String subject = authentication.getName();
+        String subject = tokenSubjectExtractor.extract(authentication);
         List<String> roles = authentication.getAuthorities().stream()
                 .filter(role -> role.getAuthority().startsWith("ROLE_"))
                 .map(role -> role.getAuthority().substring(5))
