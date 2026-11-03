@@ -10,7 +10,8 @@ A starter project for learning web security with Spring Boot. It demonstrates co
 
 | Component | Description |
 |-----------|-------------|
-| **nginx** | Reverse proxy. Serves the static SPA and forwards backend paths to the BFF, making everything appear as the same origin (`localhost:80`). |
+| **Caddy** | Reverse proxy. Making everything appear as the same origin (`localhost:80`). |
+| **nginx** | Serves the static SPA. |
 | **BFF** (Backend for Frontend) | Spring Boot app on port `8080`. Handles form login, session cookies and CSRF protection (SPA-mode). After login it can issue JWTs (RSA-signed) and call the Resource server on behalf of the user. |
 | **Resource server** | Spring Boot app on port `8081`. Exposes `/api/protected` and validates incoming JWT Bearer tokens using the BFF's public JWK set (`/.well-known/jwks.json`). |
 | **Frontend** | Vanilla JS SPA served by nginx. Talks only to the BFF via the same origin — no CORS needed. |
@@ -20,7 +21,7 @@ A starter project for learning web security with Spring Boot. It demonstrates co
 ### 1. Start nginx + frontend
 
 ```bash
-docker compose up
+docker compose -f compose.dev.yaml up -d
 ```
 
 The SPA is now available at [http://localhost](http://localhost).
