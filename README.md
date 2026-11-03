@@ -62,5 +62,5 @@ cd resource
 - CSRF protection in SPA mode
 - RSA-signed JWT generation and validation
 - Securing a separate resource server with JWTs fetched from a JWK Set endpoint
-- Nginx as a same-origin reverse proxy to avoid CORS
+- Caddy as a same-origin reverse proxy to avoid CORS
 
